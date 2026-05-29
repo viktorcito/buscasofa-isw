@@ -1,0 +1,18 @@
+@import '../styles/variables.css';
+
+.leaflet-container {
+  height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(37, 69, 71, 0.16);
+}
+
+.filter-input {
+  padding: 0.5rem;
+  width: 250px;
+  border-radius: 4px;
+  border: 1px solid var(--primary);
+  margin-left: 0.5rem;
+  background: var(--white);
+  color: var(--text);
+}
+

@@ -1,0 +1,64 @@
+// test_package.json
+
+// --- Gherkin Features (to be placed in cypress/e2e/features/) ---
+
+// features/home.feature
+/*
+Feature: Home Page
+  Scenario: User visits the home page
+    Given I open the home page
+    Then I should see "Bienvenido a BuscaSofa"
+*/
+
+// features/about.feature
+/*
+Feature: About Page
+  Scenario: User visits the about page
+    Given I open the about page
+    Then I should see "Acerca de"
+*/
+
+// features/map.feature
+/*
+Feature: Map Page
+  Scenario: User visits the map page
+    Given I open the map page
+    Then I should see the map
+*/
+
+// features/notfound.feature
+/*
+Feature: Not Found Page
+  Scenario: User visits a non-existent page
+    Given I open a non-existent page
+    Then I should see "Página no encontrada"
+*/
+
+// --- Cypress Step Definitions (to be placed in cypress/e2e/step_definitions/) ---
+
+// step_definitions/common.js
+import { Given, Then } from "@badeball/cypress-cucumber-preprocessor";
+
+Given("I open the home page", () => {
+  cy.visit("/");
+});
+
+Given("I open the about page", () => {
+  cy.visit("/about");
+});
+
+Given("I open the map page", () => {
+  cy.visit("/map");
+});
+
+Given("I open a non-existent page", () => {
+  cy.visit("/non-existent-page");
+});
+
+Then('I should see {string}', (text) => {
+  cy.contains(text).should('be.visible');
+});
+
+Then('I should see the map', () => {
+  cy.get('.leaflet-container').should('be.visible');
+});

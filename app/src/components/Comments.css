@@ -1,0 +1,80 @@
+.comments-section {
+    border-top: 1px solid var(--secondary);
+    margin: 20px;
+    padding: 10px;
+
+}
+.comments-section h2 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+.comments-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+.comments-section li {
+    background: var(--surface);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.comments-section li p {
+    margin: 0;
+}
+.comments-section li span {
+    font-size: 0.9em;
+    color: var(--dark);
+}
+.comments-section form {
+    display: flex;
+    flex-direction: column;
+}
+.comments-section form input[type="text"],
+.comments-section form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+.rating-label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.rating-input {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+.star-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    background: var(--surface);
+}
+.star-option.selected {
+    border-color: var(--primary);
+    background: rgba(59, 130, 246, 0.12);
+}
+.star-option input {
+    display: none;
+}
+.comments-section form button {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+.comment-rating {
+    margin: 6px 0;
+    color: #f5a623;
+    letter-spacing: 1px;
+}

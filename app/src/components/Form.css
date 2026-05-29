@@ -1,0 +1,84 @@
+@import '../styles/variables.css';
+
+form {
+  background: var(--surface);
+  color: var(--text);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  max-width: 420px;
+  margin: var(--space-6) auto;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+form h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+form input {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+form input::placeholder {
+  color: var(--muted);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15, 139, 141, 0.18);
+}
+
+form textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--text);
+  font-family: inherit;
+}
+
+form button {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background 0.15s ease;
+}
+
+form button:hover {
+  background: var(--primary-600);
+}
+
+form button:active {
+  background: var(--primary-700);
+}
+
+/* Mensaje de estado (éxito / error) bajo el formulario */
+form p {
+  margin: var(--space-3) 0 0;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--primary-700);
+  text-align: center;
+  font-weight: 600;
+}

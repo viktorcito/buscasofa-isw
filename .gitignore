@@ -1,0 +1,38 @@
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Builds
+dist/
+**/dist/
+dist-ssr/
+
+# Bases de datos locales (SQLite/libSQL)
+*.db
+*.db-journal
+*.sqlite
+
+# Variables de entorno / secretos
+.env
+.env.*
+*.local
+
+# Cypress
+**/cypress/screenshots/
+**/cypress/videos/
+**/cypress/reports/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# Materiales de la actividad (no se publican en el repo)
+*.pdf
+*.docx
+*.xlsx

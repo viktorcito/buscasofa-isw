@@ -1,0 +1,92 @@
+@import '../styles/variables.css';
+
+.profile-container {
+  max-width: 560px;
+  margin: var(--space-6) auto;
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.profile-container h1 {
+  margin-top: 0;
+}
+
+.profile-data {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.profile-data li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-data strong {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.profile-error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ---- Favoritos ---- */
+.favorites-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7rem 0.9rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.favorite-name {
+  font-weight: 700;
+  color: var(--primary-700);
+}
+
+.favorite-address {
+  color: var(--muted);
+  flex: 1;
+}
+
+.remove-favorite {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.remove-favorite:hover {
+  background: var(--danger);
+  color: var(--white);
+}
+
+[data-cy="no-favorites"] {
+  color: var(--muted);
+}

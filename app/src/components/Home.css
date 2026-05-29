@@ -1,0 +1,90 @@
+@import '../styles/variables.css';
+
+.home-container {
+  color: var(--text);
+}
+
+/* ---- Hero ---- */
+.home-container > h1 {
+  margin-bottom: var(--space-2);
+}
+
+.home-container .description {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: var(--space-6);
+}
+
+/* ---- Tablas tipo dashboard ---- */
+.home-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.home-container thead th {
+  background: var(--surface-strong);
+  color: var(--primary-700);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-container tbody td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-container tbody tr:nth-child(even) td {
+  background: rgba(15, 139, 141, 0.035);
+}
+
+.home-container tbody tr:hover td {
+  background: rgba(15, 139, 141, 0.08);
+}
+
+.home-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Columnas numéricas: alineadas a la derecha y con cifras tabulares */
+.gasolineras-destacadas td:nth-child(4),
+.gasolineras-destacadas td:nth-child(5),
+.gasolineras-destacadas th:nth-child(4),
+.gasolineras-destacadas th:nth-child(5),
+.resumen-nacional td:nth-child(2),
+.resumen-nacional th:nth-child(2),
+.resumen-comunidades td:nth-child(2),
+.resumen-comunidades td:nth-child(3),
+.resumen-comunidades th:nth-child(2),
+.resumen-comunidades th:nth-child(3) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Cabeceras de sección de las tablas */
+h2.gasolineras-destacadas,
+h2.resumen-nacional,
+h2.resumen-comunidades {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .home-container table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

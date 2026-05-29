@@ -1,0 +1,43 @@
+:root {
+  /* ---- Marca / colores semánticos ---- */
+  --primary: #0f8b8d;
+  --primary-600: #0c7173;
+  --primary-700: #095658;
+  --secondary: #1E9C59;
+  --accent: #9C6F1E;
+  --danger: #c0392b;
+  --success: #1E9C59;
+
+  /* ---- Superficies y texto ---- */
+  --dark: #0e2f34;
+  --bg: #eef3f4;
+  --surface: #ffffff;
+  --surface-strong: #e3eded;
+  --white: #ffffff;
+  --text: #102a2e;
+  --muted: #5a7479;
+  --border: #d6e2e2;
+
+  /* ---- Forma y profundidad ---- */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(14, 47, 52, 0.06), 0 1px 3px rgba(14, 47, 52, 0.08);
+  --shadow: 0 4px 16px rgba(14, 47, 52, 0.10);
+  --shadow-lg: 0 12px 32px rgba(14, 47, 52, 0.16);
+
+  /* ---- Espaciado (escala 4/8) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  /* ---- Tipografía ---- */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Victor Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --container: 1100px;
+}

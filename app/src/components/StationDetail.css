@@ -1,0 +1,23 @@
+@import '../styles/variables.css';
+
+.station-detail {
+  background: var(--white);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--dark);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.station-detail h2 {
+  color: var(--primary);
+}
+
+.station-detail a {
+  color: var(--white);
+  text-decoration: none;
+  background-color: var(--secondary);
+  padding: 5px 10px;
+  border-radius: 5px;
+}

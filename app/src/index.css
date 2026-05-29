@@ -1,0 +1,112 @@
+@import './styles/variables.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contenedor centrado para el contenido de las páginas */
+#root > *:not(header):not(footer),
+.page {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4);
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  color: var(--text);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem);
+  margin: 0 0 var(--space-2);
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+p {
+  margin: 0 0 var(--space-3);
+}
+
+a {
+  color: var(--primary-600);
+}
+
+/* Números tabulares para precios y datos (evita saltos de columna) */
+.num,
+td.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Foco visible accesible en todos los elementos interactivos */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Mensajes de estado globales (carga / error de la app) */
+.loading,
+.error {
+  max-width: var(--container);
+  margin: var(--space-4) auto;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.loading {
+  background: var(--surface-strong);
+  color: var(--primary-700);
+}
+
+.error {
+  background: #fdecea;
+  color: var(--danger);
+  border: 1px solid #f5c6c0;
+}
+
+/* Envoltorio para tablas anchas: scroll horizontal en móvil */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
