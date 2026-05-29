@@ -93,6 +93,42 @@
   transform: scale(1.15);
 }
 
+/* Barra "Cerca de mí" */
+.near-me-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.near-me-btn {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.near-me-btn:hover {
+  background: var(--primary-600);
+}
+
+.near-me-clear {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.near-me-msg {
+  color: var(--muted);
+}
+
 /* Filtros */
 .fuel-filters {
   margin-bottom: var(--space-4);

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { API_BASE } from '../apis/config';
 import './Comments.css';
 
 function Comments({ stationId, user }) {
@@ -8,7 +9,7 @@ function Comments({ stationId, user }) {
   const [msg, setMsg] = useState('');
 
   const fetchComments = async () => {
-    const res = await fetch(`http://localhost:4000/api/comments/${stationId}`);
+    const res = await fetch(`${API_BASE}/api/comments/${stationId}`);
     const data = await res.json();
     setComments(data);
   };
@@ -22,7 +23,7 @@ function Comments({ stationId, user }) {
     e.preventDefault();
     setMsg('');
     const token = localStorage.getItem('token');
-    const res = await fetch('http://localhost:4000/api/comments', {
+    const res = await fetch(`${API_BASE}/api/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token, station_id: stationId, comment, rating })

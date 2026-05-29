@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import FuelFilters from './FuelFilters';
 import { addFavorite, isLoggedIn } from '../apis/favorites';
+import { distanceToStation } from '../apis/geo';
 import './FuelTable.css';
 
 const PAGE_SIZE = 20;
@@ -35,6 +36,25 @@ const FuelTable = ({ stations }) => {
     } catch {
       // Si falla (p.ej. sesión caducada) no rompemos la tabla.
     }
+  };
+
+  // "Cerca de mí": geolocalización del usuario
+  const [userPos, setUserPos] = useState<{ lat: number; lon: number } | null>(null);
+  const [geoMsg, setGeoMsg] = useState('');
+
+  const handleNearMe = () => {
+    if (!navigator.geolocation) {
+      setGeoMsg('Tu navegador no soporta geolocalización.');
+      return;
+    }
+    setGeoMsg('Obteniendo tu ubicación...');
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        setUserPos({ lat: pos.coords.latitude, lon: pos.coords.longitude });
+        setGeoMsg('');
+      },
+      () => setGeoMsg('No se pudo obtener tu ubicación.')
+    );
   };
 
 
@@ -77,9 +97,32 @@ const FuelTable = ({ stations }) => {
     });
   }, [filteredStations, sortField, sortOrder, selectedFuel]);
 
+  // Distancias a cada gasolinera (solo si tenemos la posición del usuario)
+  const distances = useMemo(() => {
+    if (!userPos) return null;
+    const m = new Map<string, number>();
+    filteredStations.forEach(s => {
+      const d = distanceToStation(userPos, s);
+      if (d != null) m.set(s.IDEESS, d);
+    });
+    return m;
+  }, [userPos, filteredStations]);
+
+  // Orden final: por distancia si "cerca de mí" está activo; si no, el orden normal.
+  const orderedStations = useMemo(() => {
+    if (userPos && distances) {
+      return [...filteredStations].sort((a, b) => {
+        const da = distances.get(a.IDEESS) ?? Infinity;
+        const db = distances.get(b.IDEESS) ?? Infinity;
+        return da - db;
+      });
+    }
+    return sortedStations;
+  }, [userPos, distances, filteredStations, sortedStations]);
+
   // Paginación
-  const totalPages = Math.ceil(sortedStations.length / PAGE_SIZE);
-  const paginatedStations = sortedStations.slice(
+  const totalPages = Math.ceil(orderedStations.length / PAGE_SIZE);
+  const paginatedStations = orderedStations.slice(
     (currentPage - 1) * PAGE_SIZE,
     currentPage * PAGE_SIZE
   );
@@ -97,7 +140,7 @@ const FuelTable = ({ stations }) => {
   // Reset página al cambiar filtros
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedProvince, selectedCity, selectedFuel]);
+  }, [selectedProvince, selectedCity, selectedFuel, userPos]);
 
 
   return (
@@ -113,6 +156,17 @@ const FuelTable = ({ stations }) => {
         onCityChange={setSelectedCity}
         onFuelChange={setSelectedFuel}
       />
+      <div className="near-me-bar">
+        <button type="button" className="near-me-btn" onClick={handleNearMe}>
+          📍 Cerca de mí
+        </button>
+        {userPos && (
+          <button type="button" className="near-me-clear" onClick={() => setUserPos(null)}>
+            Quitar orden por distancia
+          </button>
+        )}
+        {geoMsg && <span className="near-me-msg">{geoMsg}</span>}
+      </div>
       <div className="table-scroll">
       <table className="fuel-table">
         <thead>
@@ -137,6 +191,7 @@ const FuelTable = ({ stations }) => {
               </button>
             </th>
             <th>Detalle</th>
+            {userPos && <th>Distancia</th>}
           </tr>
         </thead>
         <tbody>
@@ -168,6 +223,13 @@ const FuelTable = ({ stations }) => {
                   </button>
                 )}
               </td>
+              {userPos && (
+                <td className="num">
+                  {distances?.get(station.IDEESS) != null
+                    ? `${distances.get(station.IDEESS)!.toFixed(1)} km`
+                    : '—'}
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
