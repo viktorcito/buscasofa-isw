@@ -53,8 +53,11 @@ El backend que da soporte a la autenticación y a la funcionalidad de favoritos 
 - **Mapa:** visualización geográfica de las gasolineras mediante Leaflet.
 - **Página "Quienes somos"** (`/about`): presentación del equipo y del número de grupo.
 - **Registro e inicio de sesión** de usuarios, contra el backend Node/Express + SQLite/libSQL.
-- **Página de perfil** (`/perfil`): datos del usuario autenticado.
+- **Página de perfil** (`/perfil`): datos del usuario autenticado y su lista de favoritos.
 - **Funcionalidad original — Gasolineras FAVORITAS:** permite **guardar y quitar favoritos** asociados al usuario, de forma que cada persona mantiene su propia lista personalizada.
+- **Comentarios y valoraciones** (estrellas) en el detalle de cada gasolinera.
+- **"Cerca de mí":** geolocaliza al usuario y **ordena las gasolineras por distancia** (fórmula de Haversine). El mapa muestra además el **precio** de cada estación.
+- **Modo oscuro** con persistencia, diseño **accesible** (etiquetas, foco visible, `aria-label`) y **responsive**.
 
 ### Punto de partida y metodología
 
@@ -107,15 +110,20 @@ Como parte del entregable, el equipo diseñó pruebas nuevas (y sus funcionalida
 - **`perfil.cy.js`** — valida la **página de perfil** con los **datos del usuario autenticado**.
 - **`favoritos.cy.js`** — cubre la **funcionalidad original**: **listar y quitar** gasolineras **favoritas** del usuario.
 
+### 2.5.bis. Pruebas unitarias (Vitest)
+
+De forma complementaria, se han añadido **pruebas unitarias** con **Vitest** sobre las funciones puras de geolocalización (`src/apis/geo.js`): parseo de coordenadas en formato español y cálculo de distancias con la fórmula de Haversine (7 pruebas).
+
 ### 2.6. Ejecución de las pruebas
 
-La batería completa se ejecuta con Cypress en modo *headless*:
+La batería de Cypress se ejecuta en modo *headless* y las unitarias con Vitest:
 
 ```bash
-npx cypress run
+npx cypress run        # e2e + (con --component) componente
+npm run test:unit      # pruebas unitarias (Vitest)
 ```
 
-En total, la suite consta de **26 pruebas E2E + 1 prueba de componente**, y **todas se encuentran en verde**.
+En total, la suite consta de **26 pruebas E2E + 1 prueba de componente + 7 pruebas unitarias**, y **todas se encuentran en verde**.
 
 ### 2.7. Tabla resumen de pruebas
 
@@ -132,8 +140,9 @@ En total, la suite consta de **26 pruebas E2E + 1 prueba de componente**, y **to
 | `about.cy.js` (nueva) | `/about` muestra nombre y aportación de cada miembro y el número de equipo | Verde |
 | `perfil.cy.js` (nueva) | Página de perfil con datos del usuario autenticado | Verde |
 | `favoritos.cy.js` (nueva) | Listar y quitar gasolineras favoritas (funcionalidad original) | Verde |
+| `geo.test.js` (unitaria, Vitest) | Parseo de coordenadas y distancias Haversine (7 casos) | Verde |
 
-**Resultado global:** 26 pruebas E2E + 1 de componente — todas en verde.
+**Resultado global:** 26 pruebas E2E + 1 de componente + 7 unitarias — todas en verde.
 
 ---
 

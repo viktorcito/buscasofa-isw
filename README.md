@@ -20,7 +20,9 @@ Proyecto desarrollado por el **Grupo N03** (equipo nº 3) para la asignatura de 
 - **Búsqueda de precios** de gasolineras a partir de los datos abiertos del Ministerio.
 - **Mapa interactivo** (Leaflet) con la localización de las estaciones.
 - **Gasolineras favoritas**: guardar, listar y eliminar estaciones favoritas (funcionalidad original).
-- **Comentarios** asociados a las estaciones.
+- **Comentarios y valoraciones** (estrellas) asociados a cada estación.
+- **"Cerca de mí"**: geolocalización del usuario y orden de las gasolineras por distancia.
+- **Modo oscuro** con persistencia, y diseño accesible y responsive.
 
 ---
 
@@ -111,9 +113,19 @@ Remove-Item Env:\ELECTRON_RUN_AS_NODE
 npx cypress run
 ```
 
+### Pruebas unitarias (Vitest)
+
+Además de Cypress, hay pruebas unitarias de funciones puras (cálculo de distancias,
+parseo de coordenadas) con Vitest:
+
+```bash
+cd app
+npm run test:unit
+```
+
 ### Estado de las pruebas
 
-- **26 pruebas e2e** + **1 prueba de componente**.
+- **26 pruebas e2e** (Cypress + Cucumber) + **1 prueba de componente** + **7 pruebas unitarias** (Vitest).
 - Todas en verde.
 
 ---
