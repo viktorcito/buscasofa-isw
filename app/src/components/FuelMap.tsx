@@ -132,6 +132,9 @@ function FuelMap({ stations }) {
               <strong>{station['Rótulo']}</strong><br />
               {station['Dirección']}<br />
               {station['Municipio']}
+              <br />
+              <span>Gasóleo A: <strong>{station['Precio Gasoleo A'] || '—'} €</strong></span><br />
+              <span>Gasolina 95 E5: <strong>{station['Precio Gasolina 95 E5'] || '—'} €</strong></span>
             </Tooltip>
           </Marker>
         ))}

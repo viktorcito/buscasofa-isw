@@ -1,0 +1,20 @@
+# Blueprint de Render para desplegar Buscasofa con UNA sola URL.
+# El servidor Express sirve la API y el frontend compilado (app/dist) en el mismo origen.
+# En Render: New + → Blueprint → conectar este repo. Render lee este archivo.
+services:
+  - type: web
+    name: buscasofa-isw
+    runtime: node
+    plan: free
+    buildCommand: npm install --prefix server && npm install --prefix app && npm run build --prefix app
+    startCommand: node server/index_dev.js
+    envVars:
+      # Clave para firmar los JWT (Render genera un valor aleatorio seguro).
+      - key: JWT_SECRET
+        generateValue: true
+      # Persistencia real con Turso (opcional). Si se dejan sin definir, el backend
+      # usa un fichero SQLite local (los datos se reinician en cada redeploy).
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
