@@ -1,0 +1,66 @@
+@import '../styles/variables.css';
+
+.price-bar-chart {
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+.price-bar-chart__title {
+  margin: 0 0 var(--space-3);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.price-bar-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.price-bar-chart__label {
+  font-size: 13px;
+  fill: var(--text);
+}
+
+.price-bar-chart__track {
+  fill: var(--surface-strong);
+}
+
+.price-bar-chart__bar {
+  fill: var(--primary);
+  transition: width 0.35s ease;
+}
+
+.price-bar-chart__value {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  fill: var(--muted);
+}
+
+.price-bar-chart--empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.price-bar-chart__empty {
+  margin: 0;
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .price-bar-chart__bar {
+    transition: none;
+  }
+}

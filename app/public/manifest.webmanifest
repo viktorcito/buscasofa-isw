@@ -1,0 +1,24 @@
+{
+  "name": "Buscasofa — Precios de gasolineras",
+  "short_name": "Buscasofa",
+  "description": "Buscador de precios de combustible de las gasolineras españolas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef3f4",
+  "theme_color": "#173a3f",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/gas-pump.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/gas-pump.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

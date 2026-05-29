@@ -25,6 +25,8 @@ const FuelTable = ({ stations }) => {
   const logged = isLoggedIn();
   const [favIds, setFavIds] = useState<Set<string>>(new Set());
   const [favMsg, setFavMsg] = useState('');
+  // Calculadora de repostaje: litros para estimar el coste por gasolinera
+  const [liters, setLiters] = useState(50);
 
   const handleAddFavorite = async (station) => {
     try {
@@ -123,6 +125,13 @@ const FuelTable = ({ stations }) => {
     return sortedStations;
   }, [userPos, distances, filteredStations, sortedStations]);
 
+  // Coste estimado de repostar `liters` litros (del combustible filtrado o Gasóleo A)
+  const costFuelKey = selectedFuel || 'Precio Gasoleo A';
+  const stationCost = (s) => {
+    const p = parseFloat(String(s[costFuelKey] || '').replace(',', '.'));
+    return Number.isFinite(p) && p > 0 ? p * liters : null;
+  };
+
   // Paginación
   const totalPages = Math.ceil(orderedStations.length / PAGE_SIZE);
   const paginatedStations = orderedStations.slice(
@@ -169,6 +178,15 @@ const FuelTable = ({ stations }) => {
           </button>
         )}
         {geoMsg && <span className="near-me-msg">{geoMsg}</span>}
+        <label className="liters-control">
+          Litros:
+          <input
+            type="number"
+            min={1}
+            value={liters}
+            onChange={e => setLiters(Number(e.target.value) || 0)}
+          />
+        </label>
       </div>
       <div className="table-scroll">
       <table className="fuel-table">
@@ -194,6 +212,7 @@ const FuelTable = ({ stations }) => {
               </button>
             </th>
             <th>Detalle</th>
+            <th>Coste {liters} L</th>
             {userPos && <th>Distancia</th>}
           </tr>
         </thead>
@@ -225,6 +244,9 @@ const FuelTable = ({ stations }) => {
                     {favIds.has(station.IDEESS) ? '★' : '☆'}
                   </button>
                 )}
+              </td>
+              <td className="num">
+                {stationCost(station) != null ? `${stationCost(station)!.toFixed(2)} €` : '—'}
               </td>
               {userPos && (
                 <td className="num">

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import './Home.css'
 import { COMUNIDADES_AUTONOMAS } from '../apis/fuelApiLib'
+import PriceBarChart from './PriceBarChart'
 
 
 const FUEL_TYPES = [
@@ -136,6 +137,16 @@ const Home = ({ stations }) => {
         </tbody>
       </table>
 
+      <h2 className='grafico-comunidades'>Precio medio de Gasóleo A por comunidad</h2>
+      <PriceBarChart
+        data={regionSummary
+          .map(region => ({
+            label: region.regionName,
+            value: parseFloat(region.fuelPrices[0]?.avg),
+          }))
+          .filter(d => !Number.isNaN(d.value))}
+        unit="€"
+      />
 
     </div>
 
