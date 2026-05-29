@@ -36,3 +36,6 @@ npm-debug.log*
 *.pdf
 *.docx
 *.xlsx
+
+# CI workflow: requiere token con scope "workflow" para subirlo (ver README)
+.github/workflows/ci.yml
