@@ -4,8 +4,9 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--dark);
-    color: var(--white);
+    /* Color fijo en ambos temas para que combine con el fondo del logo */
+    background: #173a3f;
+    color: #f1fafa;
     box-shadow: var(--shadow);
 }
 
@@ -34,14 +35,15 @@ header {
     align-items: center;
     gap: var(--space-2);
     text-decoration: none;
-    color: var(--white);
+    color: #f1fafa;
     margin-right: var(--space-3);
 }
 
 .brand-logo {
-    height: 2.2rem;
+    height: 2.6rem;
     width: auto;
     display: block;
+    border-radius: 6px;
 }
 
 .brand-name {
@@ -63,7 +65,7 @@ nav a {
 }
 
 .nav-link:hover {
-    color: var(--white);
+    color: #f1fafa;
 }
 
 /* Subrayado animado al pasar el ratón */
@@ -87,7 +89,7 @@ nav a {
 /* "Registro" como botón destacado */
 .nav-btn {
     background: var(--primary);
-    color: var(--white);
+    color: #f1fafa;
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
     font-weight: 700;
@@ -96,13 +98,13 @@ nav a {
 
 .nav-btn:hover {
     background: var(--primary-600);
-    color: var(--white);
+    color: #f1fafa;
 }
 
 .theme-toggle {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: var(--white);
+    color: #f1fafa;
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -118,17 +120,17 @@ nav a {
 }
 
 .nav-user {
-    color: var(--white);
+    color: #f1fafa;
 }
 
 .nav-user a {
-    color: var(--white);
+    color: #f1fafa;
     text-decoration: underline;
 }
 
 .logout-btn {
     background: transparent;
-    color: var(--white);
+    color: #f1fafa;
     border: 1px solid rgba(255, 255, 255, 0.4);
     padding: 0.4rem 0.9rem;
     border-radius: var(--radius-sm);

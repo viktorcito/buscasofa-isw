@@ -17,7 +17,6 @@ function Header({ user }) {
                 <div className="nav-left">
                     <Link to="/" className="brand">
                         <img src={logo} alt="Logo" className="brand-logo" />
-                        <span className="brand-name">Buscasofa</span>
                     </Link>
                     <Link className="buscador nav-link" to="/lista">Buscador</Link>
                     <Link className="mapa nav-link" to="/mapa">Mapa</Link>

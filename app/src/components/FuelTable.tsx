@@ -24,6 +24,7 @@ const FuelTable = ({ stations }) => {
   // Favoritos (solo si el usuario ha iniciado sesión)
   const logged = isLoggedIn();
   const [favIds, setFavIds] = useState<Set<string>>(new Set());
+  const [favMsg, setFavMsg] = useState('');
 
   const handleAddFavorite = async (station) => {
     try {
@@ -33,6 +34,8 @@ const FuelTable = ({ stations }) => {
         station_address: station['Dirección'],
       });
       setFavIds(prev => new Set(prev).add(station.IDEESS));
+      setFavMsg(`${station['Rótulo']} añadida a favoritos`);
+      window.setTimeout(() => setFavMsg(''), 2500);
     } catch {
       // Si falla (p.ej. sesión caducada) no rompemos la tabla.
     }
@@ -253,6 +256,7 @@ const FuelTable = ({ stations }) => {
           {'>>'}
         </button>
       </div>
+      {favMsg && <div className="fav-toast" role="status">★ {favMsg}</div>}
     </div>
   );
 };
