@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import ThemeToggle from './ThemeToggle';
 
 import './Header.css'
 
@@ -24,6 +25,7 @@ function Header({ user }) {
                 </div>
 
                 <div className="nav-right">
+                    <ThemeToggle />
                     {!user &&
                         <>
                             <Link className="login nav-link" to="/login">Login</Link>

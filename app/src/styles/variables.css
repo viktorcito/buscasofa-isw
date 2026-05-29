@@ -40,4 +40,35 @@
   --font-mono: "Victor Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --container: 1100px;
+
+  color-scheme: light;
+}
+
+/* ---- Tema oscuro ---- */
+[data-theme="dark"] {
+  --primary: #2bb7b5;
+  --primary-600: #45c9c7;
+  --primary-700: #7fdedc;
+  --secondary: #2fb56a;
+  --accent: #d9a24a;
+  --danger: #e57368;
+
+  --dark: #0a1416;
+  --bg: #0d1719;
+  --surface: #14242a;
+  --surface-strong: #1d343a;
+  --white: #14242a;
+  --text: #e6f1f1;
+  --muted: #9fb6b8;
+  --border: #25454b;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
+}
+
+html {
+  transition: background-color 0.2s ease;
 }

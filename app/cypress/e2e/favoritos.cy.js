@@ -4,7 +4,7 @@
 
 describe('Gasolineras favoritas en el perfil', () => {
   beforeEach(() => {
-    cy.intercept('GET', '**/EstacionesTerrestres/**', { fixture: 'fuel_data.json' });
+    cy.intercept('GET', '**/EstacionesTerrestres/**', { body: { ListaEESSPrecio: [] } });
     cy.intercept('GET', '**/api/profile', { fixture: 'profile.json' });
     cy.intercept('GET', '**/api/favorites', { fixture: 'favorites.json' }).as('getFavorites');
 

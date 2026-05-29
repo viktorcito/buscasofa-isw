@@ -17,6 +17,14 @@ form h2 {
   text-align: center;
 }
 
+form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
 form input {
   width: 100%;
   padding: 0.7rem 0.85rem;

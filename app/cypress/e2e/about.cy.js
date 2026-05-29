@@ -5,8 +5,8 @@ import { TEAM, TEAM_NUMBER } from '../../src/data/team';
 
 describe('Sección "Quienes somos" (/about)', () => {
   beforeEach(() => {
-    // Estabilizamos la carga inicial de precios para no depender de la API externa.
-    cy.intercept('GET', '**/EstacionesTerrestres/**', { fixture: 'fuel_data.json' });
+    // Estabilizamos la carga inicial (no dependemos de la API externa ni de datos pesados).
+    cy.intercept('GET', '**/EstacionesTerrestres/**', { body: { ListaEESSPrecio: [] } });
     cy.visit('/about');
   });
 

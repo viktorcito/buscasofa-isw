@@ -5,7 +5,7 @@
 
 describe('Página de perfil de usuario (/perfil)', () => {
   it('muestra los datos del usuario autenticado', () => {
-    cy.intercept('GET', '**/EstacionesTerrestres/**', { fixture: 'fuel_data.json' });
+    cy.intercept('GET', '**/EstacionesTerrestres/**', { body: { ListaEESSPrecio: [] } });
     cy.intercept('GET', '**/api/profile', { fixture: 'profile.json' }).as('getProfile');
 
     cy.visit('/perfil', {
@@ -22,7 +22,7 @@ describe('Página de perfil de usuario (/perfil)', () => {
   });
 
   it('pide iniciar sesión si no hay token', () => {
-    cy.intercept('GET', '**/EstacionesTerrestres/**', { fixture: 'fuel_data.json' });
+    cy.intercept('GET', '**/EstacionesTerrestres/**', { body: { ListaEESSPrecio: [] } });
     cy.visit('/perfil');
     cy.contains('Debes iniciar sesión').should('be.visible');
   });

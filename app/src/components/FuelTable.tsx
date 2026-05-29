@@ -161,6 +161,7 @@ const FuelTable = ({ stations }) => {
                     type="button"
                     className="add-favorite"
                     title="Añadir a favoritos"
+                    aria-label={`Añadir ${station['Rótulo']} a favoritos`}
                     onClick={() => handleAddFavorite(station)}
                   >
                     {favIds.has(station.IDEESS) ? '★' : '☆'}

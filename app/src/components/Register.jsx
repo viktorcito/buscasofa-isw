@@ -23,9 +23,12 @@ function Register() {
   return (
     <form onSubmit={handleSubmit} className='register-form'>
       <h2>Registro de Usuario</h2>
-      <input name="username" placeholder="Usuario" onChange={handleChange} required />
-      <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Contraseña" onChange={handleChange} required />
+      <label htmlFor="reg-username">Usuario</label>
+      <input id="reg-username" name="username" placeholder="Tu nombre de usuario" autoComplete="username" onChange={handleChange} required />
+      <label htmlFor="reg-email">Email</label>
+      <input id="reg-email" name="email" type="email" placeholder="tucorreo@email.com" autoComplete="email" onChange={handleChange} required />
+      <label htmlFor="reg-password">Contraseña</label>
+      <input id="reg-password" name="password" type="password" placeholder="••••••••" autoComplete="new-password" onChange={handleChange} required />
       <button type="submit">Registrarse</button>
       {msg && <p>{msg}</p>}
     </form>

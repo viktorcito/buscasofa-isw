@@ -29,8 +29,10 @@ function Login({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Iniciar Sesión</h2>
-      <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Contraseña" onChange={handleChange} required />
+      <label htmlFor="login-email">Email</label>
+      <input id="login-email" name="email" type="email" placeholder="tucorreo@email.com" autoComplete="email" onChange={handleChange} required />
+      <label htmlFor="login-password">Contraseña</label>
+      <input id="login-password" name="password" type="password" placeholder="••••••••" autoComplete="current-password" onChange={handleChange} required />
       <button type="submit">Entrar</button>
       {msg && <p>{msg}</p>}
     </form>
