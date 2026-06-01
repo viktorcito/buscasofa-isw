@@ -83,8 +83,9 @@ function App() {
       {
         error && <div className="error">Error: {error}</div>
       }
-      {!loading && (
-        <Routes>
+      {/* Las rutas se renderizan siempre: solo Home/Buscador/Mapa usan los precios.
+          Login, Registro, About, Perfil y 404 no dependen de la API externa. */}
+      <Routes>
           <Route path="/registro" element={<Register />} />
           <Route path="/login" element={<Login onLogin={setUser} />} />
           <Route path="/about" element={<About />} />
@@ -95,7 +96,6 @@ function App() {
           <Route path="/perfil" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      )}
       <Footer />
     </BrowserRouter>
   )
