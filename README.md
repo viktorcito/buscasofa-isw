@@ -1,5 +1,6 @@
 # Buscasofa
 
+[![CI](https://github.com/viktorcito/buscasofa-isw/actions/workflows/ci.yml/badge.svg)](https://github.com/viktorcito/buscasofa-isw/actions/workflows/ci.yml)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
 ![Node](https://img.shields.io/badge/Node-18%2B-339933?logo=node.js&logoColor=white)
