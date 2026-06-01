@@ -9,13 +9,16 @@ import { getDistanceKm } from '@/apis/utils';
 import React from 'react';
 
 const icon = new L.Icon({
-  iconUrl: './gas-pump.png',
-  iconAnchor: [12, 41],
+  iconUrl: '/gas-pump.png',
+  iconSize: [36, 36],
+  iconAnchor: [18, 34],
+  popupAnchor: [0, -30],
 });
 
 const userIcon = new L.Icon({
-  iconUrl: './driver.png',
-  iconAnchor: [12, 41],
+  iconUrl: '/driver.png',
+  iconSize: [38, 38],
+  iconAnchor: [19, 36],
 });
 
 
@@ -102,8 +105,8 @@ function FuelMap({ stations }) {
       </div>
       <MapContainer center={userLocation} zoom={14} style={{ height: '80vh', width: '100%' }}>
         <TileLayer
-          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          url="http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker
           position={userLocation}

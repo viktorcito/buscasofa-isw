@@ -63,7 +63,7 @@ const Home = ({ stations }) => {
         s['Precio Gasoleo A'] &&
         s['Precio Gasolina 95 E5']
       )
-      .slice(0, 50);
+      .slice(0, 8);
   }, [stations]);
 
   // KPIs del dashboard
@@ -132,23 +132,40 @@ const Home = ({ stations }) => {
         </tbody>
       </table>
 
-      <h2 className='resumen-nacional'>Resumen nacional de precios</h2>
-      <table className='resumen-nacional'>
-        <thead>
-          <tr>
-            <th>Tipo de combustible</th>
-            <th>Precio medio (€)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {nationalSummary.map(fuel => (
-            <tr key={fuel.key}>
-              <td>{fuel.label}</td>
-              <td>{fuel.avg ?? 'N/A'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="dash-grid">
+        <section className="dash-panel">
+          <h2 className='resumen-nacional'>Resumen nacional de precios</h2>
+          <table className='resumen-nacional'>
+            <thead>
+              <tr>
+                <th>Tipo de combustible</th>
+                <th>Precio medio (€)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {nationalSummary.map(fuel => (
+                <tr key={fuel.key}>
+                  <td>{fuel.label}</td>
+                  <td>{fuel.avg ?? 'N/A'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        <section className="dash-panel">
+          <h2 className='grafico-comunidades'>Precio medio de Gasóleo A por comunidad</h2>
+          <PriceBarChart
+            data={regionSummary
+              .map(region => ({
+                label: region.regionName,
+                value: parseFloat(region.fuelPrices[0]?.avg),
+              }))
+              .filter(d => !Number.isNaN(d.value))}
+            unit="€"
+          />
+        </section>
+      </div>
 
       <h2 className='resumen-comunidades'>Resumen por comunidad autónoma</h2>
       <table className='resumen-comunidades'>
@@ -171,17 +188,6 @@ const Home = ({ stations }) => {
           ))}
         </tbody>
       </table>
-
-      <h2 className='grafico-comunidades'>Precio medio de Gasóleo A por comunidad</h2>
-      <PriceBarChart
-        data={regionSummary
-          .map(region => ({
-            label: region.regionName,
-            value: parseFloat(region.fuelPrices[0]?.avg),
-          }))
-          .filter(d => !Number.isNaN(d.value))}
-        unit="€"
-      />
 
     </div>
 

@@ -131,10 +131,34 @@
 /* Cabeceras de sección de las tablas */
 h2.gasolineras-destacadas,
 h2.resumen-nacional,
-h2.resumen-comunidades {
+h2.resumen-comunidades,
+h2.grafico-comunidades {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  font-size: 1.25rem;
+}
+
+/* Rejilla dashboard: resumen nacional + gráfico en 2 columnas */
+.dash-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.dash-panel {
+  min-width: 0;
+}
+
+.dash-panel h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 800px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
