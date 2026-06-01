@@ -30,16 +30,19 @@ function FuelMap({ stations }) {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [filterRotulo, setFilterRotulo] = useState('');
   const [radius, setRadius] = useState(5); // Nuevo estado para el radio
+  const [usedFallback, setUsedFallback] = useState(false);
   const markerRef = useRef(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         pos => setUserLocation([pos.coords.latitude, pos.coords.longitude]),
-        () => setUserLocation([40.4168, -3.7038]) // fallback: Madrid
+        () => { setUserLocation([40.4168, -3.7038]); setUsedFallback(true); }, // fallback: Madrid
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
     } else {
       setUserLocation([40.4168, -3.7038]); // fallback: Madrid
+      setUsedFallback(true);
     }
   }, []);
 
@@ -103,6 +106,12 @@ function FuelMap({ stations }) {
           />
         </div>
       </div>
+      {usedFallback && (
+        <p className="map-note">
+          No pudimos obtener tu ubicación (permiso denegado o no disponible). Mostrando Madrid:
+          arrastra el marcador 🚗 a tu zona para ver las gasolineras cercanas.
+        </p>
+      )}
       <MapContainer center={userLocation} zoom={14} style={{ height: '80vh', width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

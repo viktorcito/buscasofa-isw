@@ -16,3 +16,19 @@
   color: var(--text);
 }
 
+.map-note {
+  background: #fff6e6;
+  color: #8a5a00;
+  border: 1px solid #f0d28a;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 var(--space-3);
+  font-size: 0.9rem;
+}
+
+[data-theme="dark"] .map-note {
+  background: #2a2410;
+  color: #e8c879;
+  border-color: #5a4a1e;
+}
+
