@@ -11,8 +11,8 @@ export const TEAM = [
       'Implementación de las pruebas (TDD/BDD), lógica de la aplicación e integración del repositorio.',
   },
   {
-    name: 'Compañero/a 2',
-    contribution: 'Manual de usuario y capturas de la aplicación. (Pendiente: nombre real)',
+    name: 'Víctor Serrano Jiménez',
+    contribution: 'Colaboración en el desarrollo del proyecto.',
   },
   {
     name: 'Compañero/a 3',
