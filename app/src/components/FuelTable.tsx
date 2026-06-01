@@ -158,6 +158,8 @@ const FuelTable = ({ stations }) => {
   return (
     <div className="fuel-page">
       <h2>Precios de combustibles en gasolineras españolas</h2>
+      <div className="fuel-layout">
+      <aside className="fuel-sidebar">
       <FuelFilters
         provinces={provinces}
         cities={cities}
@@ -188,6 +190,8 @@ const FuelTable = ({ stations }) => {
           />
         </label>
       </div>
+      </aside>
+      <div className="fuel-main">
       <div className="table-scroll">
       <table className="fuel-table">
         <thead>
@@ -277,6 +281,8 @@ const FuelTable = ({ stations }) => {
         <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>
           {'>>'}
         </button>
+      </div>
+      </div>
       </div>
       {favMsg && <div className="fav-toast" role="status">★ {favMsg}</div>}
     </div>

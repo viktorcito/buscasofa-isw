@@ -5,15 +5,71 @@
 }
 
 /* ---- Hero ---- */
-.home-container > h1 {
-  margin-bottom: var(--space-2);
+.home-hero {
+  background: linear-gradient(135deg, var(--primary-700), var(--primary) 60%, var(--accent));
+  color: #fff;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+  box-shadow: var(--shadow);
 }
 
-.home-container .description {
+.home-hero h1 {
+  color: #fff;
+  margin: 0 0 var(--space-2);
+}
+
+.home-hero .description {
   font-size: 1.15rem;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.92);
   max-width: 60ch;
+  margin: 0;
+}
+
+/* ---- Tarjetas KPI ---- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
   margin-bottom: var(--space-6);
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.kpi-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary-700);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.kpi-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.kpi-sub {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---- Tablas tipo dashboard ---- */

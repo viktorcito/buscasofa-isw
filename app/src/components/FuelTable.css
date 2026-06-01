@@ -113,6 +113,56 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Layout tipo dashboard: barra lateral + tabla */
+.fuel-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.fuel-sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.fuel-sidebar .fuel-filters {
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 0;
+}
+
+.fuel-sidebar .fuel-filters select {
+  width: 100%;
+}
+
+.fuel-sidebar .near-me-bar {
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 0;
+}
+
+/* La columna principal debe poder encoger para que la tabla haga scroll */
+.fuel-main {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .fuel-layout {
+    grid-template-columns: 1fr;
+  }
+  .fuel-sidebar {
+    position: static;
+  }
+}
+
 /* Barra "Cerca de mí" */
 .near-me-bar {
   display: flex;

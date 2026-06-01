@@ -66,11 +66,46 @@ const Home = ({ stations }) => {
       .slice(0, 50);
   }, [stations]);
 
+  // KPIs del dashboard
+  const priceGasoleo = getAverage(stations.map(s => s['Precio Gasoleo A']));
+  const priceGasolina = getAverage(stations.map(s => s['Precio Gasolina 95 E5']));
+  const cheapestRegion = useMemo(() => {
+    let best = null;
+    regionSummary.forEach(r => {
+      const v = parseFloat(r.fuelPrices[0]?.avg);
+      if (!Number.isNaN(v) && (!best || v < best.v)) best = { name: r.regionName, v };
+    });
+    return best;
+  }, [regionSummary]);
+
+  const kpis = [
+    { label: 'Gasóleo A · media nacional', value: priceGasoleo ? `${priceGasoleo} €` : '—' },
+    { label: 'Gasolina 95 · media nacional', value: priceGasolina ? `${priceGasolina} €` : '—' },
+    { label: 'Gasolineras', value: (stations.length || 0).toLocaleString('es-ES') },
+    {
+      label: 'Comunidad más barata (Gasóleo A)',
+      value: cheapestRegion ? cheapestRegion.name : '—',
+      sub: cheapestRegion ? `${cheapestRegion.v.toFixed(3)} €` : '',
+    },
+  ];
+
   return (
     <div className="home-container">
-      <h1>Buscasofa</h1>
-      <div className='description'>
-        El mejor buscador de precios de combustible de España.
+      <div className="home-hero">
+        <h1>Buscasofa</h1>
+        <div className='description'>
+          El mejor buscador de precios de combustible de España.
+        </div>
+      </div>
+
+      <div className="kpi-grid">
+        {kpis.map(k => (
+          <div className="kpi-card" key={k.label}>
+            <span className="kpi-value">{k.value}</span>
+            <span className="kpi-label">{k.label}</span>
+            {k.sub && <span className="kpi-sub">{k.sub}</span>}
+          </div>
+        ))}
       </div>
 
       <h2 className='gasolineras-destacadas'>Gasolineras destacadas</h2>
