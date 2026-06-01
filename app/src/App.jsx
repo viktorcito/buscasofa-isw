@@ -31,9 +31,22 @@ import NotFound from './components/NotFound';
 function App() {
 
   const [stations, setStations] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(/** @type {string | null} */(null));
   const [loading, setLoading] = useState(true);   // Inicialmente cargando ...
   const [error, setError] = useState(null);
+
+  // Mantener la sesión al recargar: si hay token + usuario guardados, restaurar.
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    if (token && username) setUser(username);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setUser(null);
+  };
 
     useEffect(() => {
       fetchFuelPrices()
@@ -63,7 +76,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header user={user} />
+      <Header user={user} onLogout={handleLogout} />
       {
         loading && <div className="loading">Cargando...</div>
       }

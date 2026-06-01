@@ -5,10 +5,9 @@ import ThemeToggle from './ThemeToggle';
 
 import './Header.css'
 
-function Header({ user }) {
+function Header({ user, onLogout }) {
     const handleLogout = () => {
-        // Lógica de cierre de sesión
-        console.log('Cerrar sesión');
+        if (onLogout) onLogout();
     };
 
     return (
