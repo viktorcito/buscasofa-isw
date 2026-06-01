@@ -20,6 +20,11 @@ module.exports = defineConfig({
       'cypress/e2e/features/*.feature',
     ],
     baseUrl: 'http://localhost:5173/',
+    // La API pública del Ministerio puede ser lenta (~10MB) desde CI: damos margen.
+    defaultCommandTimeout: 12000,
+    requestTimeout: 30000,
+    responseTimeout: 120000,
+    pageLoadTimeout: 120000,
     async setupNodeEvents(on, config) {
       // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
       await addCucumberPreprocessorPlugin(on, config);
