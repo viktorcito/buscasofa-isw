@@ -19,10 +19,6 @@ jobs:
         working-directory: server
         run: npm install
 
-      - name: Arrancar backend (libSQL)
-        working-directory: server
-        run: node index_dev.js &
-
       - name: Instalar frontend
         working-directory: app
         run: npm install
@@ -36,7 +32,10 @@ jobs:
         with:
           working-directory: app
           install: false
-          start: npm run dev
+          # Arranca backend (libSQL) y frontend (vite) y espera a que vite responda.
+          start: |
+            node ../server/index_dev.js
+            npm run dev
           wait-on: 'http://localhost:5173'
           wait-on-timeout: 120
 
