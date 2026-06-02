@@ -11,9 +11,9 @@
 - Víctor García Santos
 - Víctor Serrano Jiménez
 - Ana González Bueno
-- Compañero/a 4
+- Javier Abad del Molino
 
-**Fecha:** mayo 2026
+**Fecha:** junio 2026
 
 ---
 
