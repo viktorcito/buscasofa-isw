@@ -15,8 +15,8 @@ export const TEAM = [
     contribution: 'Colaboración en el desarrollo del proyecto.',
   },
   {
-    name: 'Compañero/a 3',
-    contribution: 'Redacción de la memoria y pruebas manuales (QA). (Pendiente: nombre real)',
+    name: 'Ana González Bueno',
+    contribution: 'Colaboración en desarrollo y revisión final',
   },
   {
     name: 'Compañero/a 4',
