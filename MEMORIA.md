@@ -9,8 +9,8 @@
 **Miembros del equipo:**
 
 - Víctor García Santos
-- Compañero/a 2
-- Compañero/a 3
+- Víctor Serrano Jiménez
+- Ana González Bueno
 - Compañero/a 4
 
 **Fecha:** mayo 2026
