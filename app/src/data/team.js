@@ -19,7 +19,7 @@ export const TEAM = [
     contribution: 'Colaboración en desarrollo y revisión final',
   },
   {
-    name: 'Compañero/a 4',
-    contribution: 'Apoyo en componentes y revisión final. (Pendiente: nombre real)',
+    name: 'Javier Abad del Molino',
+    contribution: 'Colaboración en revisión final y pruebas de usuario.',
   },
 ];
