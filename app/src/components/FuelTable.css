@@ -78,15 +78,34 @@
   gap: 0.25rem;
 }
 
+/* Primera columna: estrella de favorito + nombre de la gasolinera */
+.fuel-table td.station-cell {
+  overflow: visible; /* que no recorte el ☆ */
+}
+
+.station-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.station-cell .station-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
 /* Botón ☆/★ de favoritos */
 .add-favorite {
+  flex: 0 0 auto;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   line-height: 1;
   color: var(--accent);
-  padding: 0 0 0 0.5rem;
+  padding: 0;
 }
 
 .add-favorite:hover {

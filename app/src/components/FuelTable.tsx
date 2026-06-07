@@ -223,7 +223,20 @@ const FuelTable = ({ stations }) => {
         <tbody>
           {paginatedStations.map((station, idx) => (
             <tr key={station.IDEESS || idx}>
-              <td>{station['Rótulo']}</td>
+              <td className="station-cell">
+                {logged && (
+                  <button
+                    type="button"
+                    className="add-favorite"
+                    title={favIds.has(station.IDEESS) ? 'En favoritos' : 'Añadir a favoritos'}
+                    aria-label={`Añadir ${station['Rótulo']} a favoritos`}
+                    onClick={() => handleAddFavorite(station)}
+                  >
+                    {favIds.has(station.IDEESS) ? '★' : '☆'}
+                  </button>
+                )}
+                <span className="station-name">{station['Rótulo']}</span>
+              </td>
               <td>{station['Dirección']}</td>
               <td>{station['Municipio']}</td>
               <td>{station['Precio Gasoleo A']}</td>
@@ -237,17 +250,6 @@ const FuelTable = ({ stations }) => {
                 >
                   Ver detalle
                 </Link>
-                {logged && (
-                  <button
-                    type="button"
-                    className="add-favorite"
-                    title="Añadir a favoritos"
-                    aria-label={`Añadir ${station['Rótulo']} a favoritos`}
-                    onClick={() => handleAddFavorite(station)}
-                  >
-                    {favIds.has(station.IDEESS) ? '★' : '☆'}
-                  </button>
-                )}
               </td>
               <td className="num">
                 {stationCost(station) != null ? `${stationCost(station)!.toFixed(2)} €` : '—'}
